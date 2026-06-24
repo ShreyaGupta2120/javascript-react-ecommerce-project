@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Navbar({ cartCount }) {
+function Navbar({ cartCount, onCartClick, searchQuery, onSearchChange }) {
   return (
     <nav
       className="navbar navbar-expand-lg px-4 py-3 sticky-top"
@@ -22,6 +22,8 @@ function Navbar({ cartCount }) {
             className="form-control rounded-pill border-0 ps-4"
             placeholder="🔍 Search for products..."
             style={{ backgroundColor: '#f3f0fb' }}
+            value={searchQuery}
+            onChange={onSearchChange}
           />
         </div>
       </div>
@@ -31,12 +33,11 @@ function Navbar({ cartCount }) {
         <button
           className="btn text-white position-relative px-4 rounded-pill"
           style={{ backgroundColor: '#6f42c1' }}
+          onClick={onCartClick}
         >
           🛒 Cart
           {cartCount > 0 && (
-            <span
-              className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
-            >
+            <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
               {cartCount}
             </span>
           )}
